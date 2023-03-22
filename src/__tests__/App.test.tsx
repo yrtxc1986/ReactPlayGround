@@ -1,18 +1,18 @@
 // Imports
-import { render } from '@testing-library/react';
+import { render, screen } from "@testing-library/react";
 
 // To Test
-import App from '../App';
+import App from "../App";
 
 // Tests
-test('Renders main page correctly', () => {
-   // Setup
-   render(<App />);
+test("Renders main page correctly", async () => {
+  // Setup
+  render(<App />);
+  const buttonCount = await screen.findByRole("button");
+  // Pre Expecations
+  expect(buttonCount.innerHTML).toBe("count is 0");
+  // Init
 
-   // Pre Expecations
-
-   // Init
-
-   // Post Expectations
+  // Post Expectations
   expect(true).toBeTruthy();
 });
