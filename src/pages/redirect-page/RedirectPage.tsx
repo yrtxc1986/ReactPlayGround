@@ -43,7 +43,7 @@ const hasPreviousRound = (STAT: string | null): boolean => {
   return !STAT?.startsWith('TODATAC');
 };
 
-const getBasicMergeSTAT = (STAT: string): string => {
+const getBasicMergeSTAT = (STAT: string): string|undefined => {
   switch (STAT_TO_ENUM(STAT)) {
     case 'inputter1':
       return 'TOMDATAC1';
@@ -52,7 +52,7 @@ const getBasicMergeSTAT = (STAT: string): string => {
     case 'supervisor':
       return 'TOMDATACSP';
     default:
-      return '';
+      return undefined;
   }
 };
 
@@ -60,7 +60,10 @@ const isBasicSTAT = (STAT: string): boolean => {
   return STAT.startsWith('TOD') || STAT.startsWith('TOMD');
 };
 
-const getUrl = (DDEM: string, DDES: string, STAT: string): string => {
+const getUrl = (DDEM: string, DDES: string, STAT: string|undefined): string => {
+  if(!STAT){
+    return '';
+  }
   const url = RedirectUrlMappingData[`${DDEM}-${DDES}-${STAT}`];
   if (!url && !isBasicSTAT(STAT)) {
     return getUrl(DDEM, DDES, getBasicMergeSTAT(STAT));
@@ -91,21 +94,22 @@ const getRedirectParams = (searchParams: URLSearchParams): RedirectParams | null
 const RedirectPage = (): ReactElement => {
   const [searchParams] = useSearchParams();
   const param = getRedirectParams(searchParams);
+  console.log(param);
   if (!param) {
-    return <Navigate to='/4041' />;
+    return <Navigate to='/404' />;
   }
-
   const { ObjectID, DDEM, DDES, STAT } = param;
 
   const adminPortalRoute = getUrl(DDEM, DDES, STAT);
 
   if (!adminPortalRoute) {
-    return <Navigate to='/4041' />;;
+    return <Navigate to='/404' />;;
   }
 
   const redirectLink = `${adminPortalRoute}/${ObjectID}/${STAT_TO_INPUTER(
     STAT
   )}/${hasPreviousRound(STAT)}`;
+
   return <Navigate to={redirectLink} />;
 };
 

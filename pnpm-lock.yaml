@@ -12,6 +12,7 @@ specifiers:
   '@types/react-dom': ^18.0.11
   '@vitejs/plugin-react': ^3.1.0
   babel-jest: ^29.5.0
+  history: ^5.3.0
   identity-obj-proxy: ^3.0.0
   jest: ^29.5.0
   jest-environment-jsdom: ^29.5.0
@@ -41,6 +42,7 @@ devDependencies:
   '@types/react-dom': 18.0.11
   '@vitejs/plugin-react': 3.1.0_vite@4.2.1
   babel-jest: 29.5.0_@babel+core@7.21.3
+  history: 5.3.0
   identity-obj-proxy: 3.0.0
   jest: 29.5.0_757mb262zsxkcnuknwfdsckmku
   jest-environment-jsdom: 29.5.0
@@ -1914,7 +1916,6 @@ packages:
     resolution: {integrity: sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ==}
     dependencies:
       '@babel/runtime': 7.21.0
-    dev: false
 
   /html-encoding-sniffer/3.0.0:
     resolution: {integrity: sha512-oWv4T4yJ52iKrufjnyZPkrN0CH3QnrUqdB6In1g5Fe1mia8GmF36gnfNySxoZtxD5+NmYw1EElVXiBk93UeskA==}
