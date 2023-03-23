@@ -2,6 +2,7 @@ import type { Route } from "./types";
 import { Navigate } from "react-router-dom";
 
 import Content from "~/pages/content/App";
+import RedirectPage from "~/pages/redirect-page";
 
 export const appRouter: Route[] = [
   {
@@ -11,6 +12,10 @@ export const appRouter: Route[] = [
   {
     path: "/content",
     element: <Content />,
+  },
+  {
+    path: "/page/redirect",
+    element: <RedirectPage />
   },
   {
     path: "*",
